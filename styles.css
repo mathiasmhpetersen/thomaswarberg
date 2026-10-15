@@ -1,0 +1,224 @@
+/* ===========================================================
+   Thomas Warberg — video landing page
+   Brand values pulled from thomaswarberg.dk
+   =========================================================== */
+
+:root {
+  --bg:         #252526; /* dark charcoal */
+  --bg-deep:    #1c1c1d; /* slightly darker, behind the video */
+  --text:       #eeece8; /* warm off-white */
+  --muted:      #63676a; /* muted text / dividers */
+  --gold-head:  #d7ad32; /* display headline gold */
+  --gold-cta:   #cfa84e; /* accent / CTA / stars */
+  --on-gold:    #252526; /* button text on gold */
+
+  --maxw: 1040px;
+  --gap: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Archivo", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* subtle vignette for cinematic depth */
+  background-image: radial-gradient(130% 100% at 50% 0%, #2b2b2c 0%, var(--bg) 42%, var(--bg-deep) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* subtle film grain — CSS-only, no network request */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(1.75rem, 5vw, 3.5rem) clamp(1.1rem, 5vw, 2rem) clamp(2.5rem, 6vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+/* ---------- Headline ---------- */
+.hero { text-align: center; }
+
+.kicker {
+  margin: 0 0 0.6rem;
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  font-size: clamp(0.72rem, 2.4vw, 0.95rem);
+  color: var(--muted);
+}
+
+.headline {
+  margin: 0;
+  font-family: "Permanent Marker", "Brush Up", cursive;
+  font-weight: 400; /* Permanent Marker ships as a single weight; reads bold by design */
+  color: var(--gold-head);
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: 0;
+  font-size: clamp(2rem, 7.5vw, 4.25rem);
+  text-wrap: balance;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- Video ---------- */
+.video { width: 100%; }
+
+.video__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;      /* reserves the box — zero layout shift */
+  background: var(--bg-deep);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 30px 70px -24px rgba(0, 0, 0, 0.85);
+}
+
+/* poster button fills the frame */
+.video__poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background-color: var(--bg-deep);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: grid;
+  place-items: center;
+  transition: filter 0.2s ease;
+}
+.video__poster::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 60% at 50% 50%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.45) 100%);
+}
+.video__poster:hover,
+.video__poster:focus-visible { filter: brightness(1.06); }
+.video__poster:focus-visible { outline: 2px solid var(--gold-cta); outline-offset: 3px; }
+
+.video__play {
+  position: relative;
+  z-index: 1;
+  display: block;
+  transition: transform 0.18s ease;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5));
+}
+.video__poster:hover .video__play { transform: scale(1.08); }
+
+.video__play svg { display: block; }
+.video__play-bg { fill: #cc0000; transition: fill 0.18s ease; }
+.video__poster:hover .video__play-bg { fill: #ff0000; }
+
+/* the swapped-in iframe */
+.video__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---------- CTA ---------- */
+.cta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.cta__line {
+  margin: 0 auto;
+  max-width: 34ch;
+  color: var(--text);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 3.2vw, 1.3rem);
+}
+
+.cta__btn {
+  display: inline-block;
+  background: var(--gold-cta);
+  color: var(--on-gold);
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  line-height: 1.15;
+  padding: 1.05rem 2.1rem;
+  border-radius: 2px;
+  box-shadow: 0 12px 30px -10px rgba(207, 168, 78, 0.55);
+  transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+.cta__btn:hover {
+  background: #dcb662;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -10px rgba(207, 168, 78, 0.7);
+}
+.cta__btn:active { transform: translateY(0); }
+.cta__btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+
+.stars {
+  color: var(--gold-cta);
+  font-size: 1.15rem;
+  letter-spacing: 0.28em;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+/* ---------- Footer ---------- */
+.foot {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.wordmark {
+  margin: 0;
+  font-family: "Permanent Marker", cursive;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 1.05rem;
+  opacity: 0.7;
+}
+
+/* ---------- Motion / small screens ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+@media (max-width: 480px) {
+  .page { gap: clamp(1.25rem, 5vw, 1.75rem); }
+}
