@@ -5,7 +5,7 @@
 
 :root {
   --bg:         #252526; /* dark charcoal */
-  --bg-deep:    #1c1c1d; /* slightly darker, behind the video */
+  --bg-deep:    #1c1c1d; /* slightly darker, behind the video / sticky bar */
   --text:       #eeece8; /* warm off-white */
   --muted:      #63676a; /* muted text / dividers */
   --gold-head:  #d7ad32; /* display headline gold */
@@ -54,13 +54,40 @@ body {
   z-index: 1;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: clamp(1.75rem, 5vw, 3.5rem) clamp(1.1rem, 5vw, 2rem) clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(1.4rem, 4vw, 2.5rem) clamp(1.1rem, 5vw, 2rem) clamp(2.5rem, 6vw, 4rem);
   display: flex;
   flex-direction: column;
   gap: var(--gap);
 }
 
-/* ---------- Headline ---------- */
+/* ---------- 1. Badge ---------- */
+.badge {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  max-width: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: var(--gold-cta);
+  font-weight: 600;
+  font-size: clamp(0.82rem, 2.6vw, 0.95rem);
+  line-height: 1.3;
+  padding: 0.5rem 1.05rem;
+  border: 1px solid rgba(207, 168, 78, 0.5);
+  border-radius: 999px;
+  background: rgba(207, 168, 78, 0.06);
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+}
+.badge:hover {
+  background: rgba(207, 168, 78, 0.12);
+  border-color: var(--gold-cta);
+}
+.badge__arrow { transition: transform 0.18s ease; }
+.badge:hover .badge__arrow { transform: translateX(3px); }
+.badge:focus-visible { outline: 2px solid var(--gold-cta); outline-offset: 3px; }
+
+/* ---------- 2. Headline block ---------- */
 .hero { text-align: center; }
 
 .kicker {
@@ -68,9 +95,9 @@ body {
   font-family: "Archivo", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.34em;
-  font-size: clamp(0.72rem, 2.4vw, 0.95rem);
-  color: var(--muted);
+  letter-spacing: 0.12em;
+  font-size: clamp(0.74rem, 2.4vw, 0.95rem);
+  color: var(--gold-cta);
 }
 
 .headline {
@@ -86,7 +113,22 @@ body {
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
 }
 
-/* ---------- Video ---------- */
+.hero__sub {
+  margin: 0.8rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: clamp(0.9rem, 2.6vw, 1.05rem);
+}
+.hero__source { color: var(--text); font-weight: 600; }
+
+.stars {
+  color: var(--gold-cta);
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+/* ---------- 3. Video ---------- */
 .video { width: 100%; }
 
 .video__frame {
@@ -101,7 +143,6 @@ body {
     0 30px 70px -24px rgba(0, 0, 0, 0.85);
 }
 
-/* poster button fills the frame */
 .video__poster {
   position: absolute;
   inset: 0;
@@ -137,12 +178,10 @@ body {
   filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.5));
 }
 .video__poster:hover .video__play { transform: scale(1.08); }
-
 .video__play svg { display: block; }
 .video__play-bg { fill: #cc0000; transition: fill 0.18s ease; }
 .video__poster:hover .video__play-bg { fill: #ff0000; }
 
-/* the swapped-in iframe */
 .video__frame iframe {
   position: absolute;
   inset: 0;
@@ -151,59 +190,118 @@ body {
   border: 0;
 }
 
-/* ---------- CTA ---------- */
-.cta {
+.video__note {
+  margin: 0.7rem 0 0;
   text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ---------- 4. New show block ---------- */
+.newshow {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.1rem;
+  gap: clamp(1.1rem, 3vw, 2.25rem);
+  text-align: center;
 }
 
-.cta__line {
-  margin: 0 auto;
-  max-width: 34ch;
+.newshow__poster { flex: none; }
+.newshow__poster img {
+  display: block;
+  width: 100%;
+  max-width: 60vw;          /* mobile: never more than 60% viewport width */
+  height: auto;             /* width/height attrs reserve the 728x1024 ratio */
+  border: 1px solid rgba(207, 168, 78, 0.35);
+  box-shadow: 0 24px 55px -22px rgba(0, 0, 0, 0.85);
+}
+
+.newshow__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: clamp(0.74rem, 2.4vw, 0.9rem);
+  color: var(--gold-cta);
+}
+
+.newshow__title {
+  margin: 0;
+  font-family: "Permanent Marker", "Brush Up", cursive;
+  font-weight: 400;
+  color: var(--gold-head);
+  text-transform: uppercase;
+  line-height: 1.1;
+  font-size: clamp(1.7rem, 6vw, 3rem);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.newshow__text {
+  margin: 0;
+  max-width: 42ch;
   color: var(--text);
-  font-weight: 600;
-  font-size: clamp(1.05rem, 3.2vw, 1.3rem);
+  font-weight: 500;
 }
 
-.cta__btn {
+/* shared gold button */
+.btn {
   display: inline-block;
+  margin-top: 0.4rem;
   background: var(--gold-cta);
   color: var(--on-gold);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-size: clamp(1rem, 3vw, 1.15rem);
   line-height: 1.15;
   padding: 1.05rem 2.1rem;
   border-radius: 2px;
   box-shadow: 0 12px 30px -10px rgba(207, 168, 78, 0.55);
   transition: transform 0.12s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
-.cta__btn:hover {
+.btn:hover {
   background: #dcb662;
   transform: translateY(-2px);
   box-shadow: 0 16px 36px -10px rgba(207, 168, 78, 0.7);
 }
-.cta__btn:active { transform: translateY(0); }
-.cta__btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.btn:active { transform: translateY(0); }
+.btn:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 
-.stars {
-  color: var(--gold-cta);
-  font-size: 1.15rem;
-  letter-spacing: 0.28em;
-  line-height: 1;
-  opacity: 0.9;
+/* two-column from 768px up: poster left, text right */
+@media (min-width: 768px) {
+  .newshow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2rem, 4vw, 3.25rem);
+    text-align: left;
+  }
+  .newshow__poster img { width: 280px; max-width: 280px; }
+  .newshow__body { align-items: flex-start; }
+  .newshow__text { max-width: 40ch; }
 }
 
-/* ---------- Footer ---------- */
-.foot {
+/* ---------- 5. Review line ---------- */
+.review {
+  margin: 0;
   text-align: center;
-  margin-top: 0.5rem;
+  color: var(--text);
+  font-style: italic;
+  font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+  opacity: 0.92;
 }
+
+/* ---------- 6. Footer ---------- */
+.foot { text-align: center; margin-top: 0.5rem; }
 .wordmark {
   margin: 0;
   font-family: "Permanent Marker", cursive;
@@ -214,11 +312,56 @@ body {
   opacity: 0.7;
 }
 
-/* ---------- Motion / small screens ---------- */
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
+/* ---------- Sticky mobile CTA ---------- */
+.stickybar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: none;                 /* desktop: never */
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  padding-bottom: calc(0.7rem + env(safe-area-inset-bottom));
+  background: var(--bg-deep);
+  border-top: 1px solid rgba(99, 103, 106, 0.3);
+  transform: translateY(110%);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stickybar__text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.25;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.stickybar__btn {
+  flex: none;
+  background: var(--gold-cta);
+  color: var(--on-gold);
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 13px;
+  padding: 0.65rem 1.05rem;
+  border-radius: 2px;
+}
+.stickybar__btn:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+@media (max-width: 767px) {
+  .stickybar { display: flex; }
+  /* reveal once playing; reserve space so the bar never covers the review line */
+  body.is-playing .stickybar { transform: translateY(0); }
+  body.is-playing { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
 }
 
-@media (max-width: 480px) {
-  .page { gap: clamp(1.25rem, 5vw, 1.75rem); }
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
 }
