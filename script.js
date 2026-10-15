@@ -4,7 +4,7 @@
    are one-line edits.
    =========================================================== */
 
-const TICKET_URL = "{{TICKET_URL}}"; // TODO: swap in real ticket link
+const TICKET_URL = "https://thomaswarberg.dk"; // ticket destination
 const YOUTUBE_ID = "hRVRtHOxXrM";
 const NEW_SHOW = "Fars fede onemanshow";
 const POSTER_URL = "https://thomaswarberg.dk/wp-content/uploads/2026/09/TW_Tour27_Plakat_Medium-728x1024.webp"; // self-hosted at img/plakat.webp
