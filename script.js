@@ -29,6 +29,18 @@ const REVIEWS = [
   }
 ];
 
+/* Audience quotes for the marquee strip (verbatim — no names, handles or dates).
+   Each is shown with the source label "Seer på YouTube". */
+const VOICES = [
+  "Fuck det er fedt det her show! Man får da det BEDSTE grin",
+  "Græder stadig af grin en uge efter",
+  "Du er en kæmpe inspiration for en deltidsfar, der også troede alt skulle være perfekt",
+  "Wauw – fantastisk show!!",
+  "Fantastisk 😂😂 tak for det 🙏",
+  "Et fantastisk og nærværende show med sjov og eftertænksomt indhold. Det kan ikke fra bedre"
+];
+const VOICE_SOURCE = "Seer på YouTube";
+
 (function () {
   "use strict";
 
@@ -104,6 +116,62 @@ const REVIEWS = [
   }
 
   initPress();
+
+  /* -------------------- Audience quotes marquee -------------------- */
+  function buildVoice(text) {
+    var item = document.createElement("span");
+    item.className = "voices__item";
+
+    var q = document.createElement("span");
+    q.className = "voices__q";
+    q.textContent = "„" + text + "”"; // „ … "
+
+    var src = document.createElement("span");
+    src.className = "voices__src";
+    src.textContent = VOICE_SOURCE;
+
+    var sep = document.createElement("span");
+    sep.className = "voices__sep";
+    sep.setAttribute("aria-hidden", "true");
+    sep.textContent = "·";
+
+    item.appendChild(q);
+    item.appendChild(src);
+    item.appendChild(sep);
+    return item;
+  }
+
+  function initVoices() {
+    var track = document.getElementById("voicesTrack");
+    if (!track || !VOICES.length) return;
+
+    var reduce =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    track.innerHTML = "";
+
+    if (reduce) {
+      // Static: first two quotes, centered and wrapped, no animation.
+      VOICES.slice(0, 2).forEach(function (t) { track.appendChild(buildVoice(t)); });
+      track.classList.add("is-static");
+      return;
+    }
+
+    // Build the list twice so the translateX(-50%) loop is seamless.
+    var frag = document.createDocumentFragment();
+    VOICES.forEach(function (t) { frag.appendChild(buildVoice(t)); });
+    VOICES.forEach(function (t) { frag.appendChild(buildVoice(t)); });
+    track.appendChild(frag);
+
+    // Pause on touch (hover is handled in CSS). Passive so scrolling isn't blocked.
+    var vp = track.parentNode;
+    vp.addEventListener("touchstart", function () { track.classList.add("is-paused"); }, { passive: true });
+    vp.addEventListener("touchend", function () { track.classList.remove("is-paused"); });
+    vp.addEventListener("touchcancel", function () { track.classList.remove("is-paused"); });
+  }
+
+  initVoices();
 
   // --- Click-to-play: swap poster for the autoplaying YouTube iframe ---
   function playVideo() {
