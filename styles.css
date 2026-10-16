@@ -198,88 +198,60 @@ body {
   font-weight: 500;
 }
 
-/* ---------- Rotating press cards ---------- */
+/* ---------- Press cards (all shown at once) ---------- */
 .press {
-  position: relative;
-  max-width: 720px;
-  margin: 1.4rem auto 0;
-  height: 160px;          /* fixed — reserved for the tallest quote, no layout shift */
+  max-width: 1040px;
+  margin: 1.6rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;      /* cards in a row share height */
+  gap: 1rem;
 }
 
 .press__card {
-  position: absolute;
-  inset: 0;
+  flex: 0 1 300px;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
+  justify-content: flex-start;
+  gap: 0.75rem;
   text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-.press__card.is-active {
-  opacity: 1;
-  pointer-events: auto;
+  padding: 1.35rem 1.1rem;
+  border: 1px solid rgba(238, 236, 232, 0.08);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.015);
 }
 
 .press__quote {
-  position: relative;
-  z-index: 1;
   margin: 0;
-  max-width: 34ch;
   font-weight: 700;
   font-style: italic;
   text-transform: uppercase;
   color: var(--text);
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.35;
 }
 
 .press__rating {
-  position: relative;
-  z-index: 1;
   display: flex;
   gap: 4px;                /* matches the requested 4px letter-spacing */
   color: var(--gold-cta);
   font-size: 18px;         /* drives icon size via em */
+  margin-top: auto;        /* pin rating + source to the bottom for a tidy grid */
 }
 .press__rating .icon { width: 1em; height: 1em; display: block; }
-.icon--star { fill: currentColor; }
-.icon--line {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
+.icon--star,
+.icon--heart { fill: currentColor; }
 
 .press__source {
-  position: relative;
-  z-index: 1;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: #8A8E91;
   font-size: 12px;
 }
-
-/* faint crown behind card 5 */
-.press__crown {
-  position: absolute;
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  width: 180px;
-  height: 180px;
-  transform: translate(-50%, -54%);
-  color: var(--gold-cta);
-  opacity: 0.06;
-  pointer-events: none;
-}
-.press__crown .icon--line { stroke-width: 1.1; }
 
 /* ---------- 4. New show block ---------- */
 .newshow {
@@ -433,8 +405,8 @@ body {
   body.is-playing .stickybar { transform: translateY(0); }
   body.is-playing { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
 
-  /* press cards: smaller type, taller box so the longest quote never clips at 375px */
-  .press { height: 184px; }
+  /* press cards: stack one per row, slightly smaller type */
+  .press__card { flex-basis: 100%; }
   .press__quote { font-size: 16px; }
   .press__rating { font-size: 16px; }
 }
