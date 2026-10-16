@@ -190,14 +190,6 @@ body {
   border: 0;
 }
 
-.video__note {
-  margin: 0.7rem 0 0;
-  text-align: center;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 500;
-}
-
 /* ---------- Press cards (all shown at once) ---------- */
 .press {
   max-width: 1040px;

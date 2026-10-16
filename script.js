@@ -26,16 +26,6 @@ const REVIEWS = [
     quote: "Thomas Warbergs nye one-man show besidder en misundelsesværdig ligefremhed…",
     rating: ["star", "star", "star", "star"],
     source: "Scenekanten"
-  },
-  {
-    quote: "Har et sikkert medfødt funny bone",
-    rating: ["star", "star", "star", "star"],
-    source: "POV International"
-  },
-  {
-    quote: "…Det er kongekrone-sjovt",
-    rating: ["star", "star", "star", "star"],
-    source: "Magasinet KBH"
   }
 ];
 
