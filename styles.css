@@ -114,19 +114,32 @@ body {
 }
 
 .hero__sub {
-  margin: 0.8rem 0 0;
+  margin: 0.9rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1.6rem;
+  font-size: clamp(0.9rem, 2.6vw, 1.05rem);
+}
+.rating {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
-  font-size: clamp(0.9rem, 2.6vw, 1.05rem);
 }
-.hero__source { color: var(--text); font-weight: 600; }
-
-.stars {
+.rating__marks {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
   color: var(--gold-cta);
-  letter-spacing: 0.12em;
-  line-height: 1;
+  font-size: 1.1em;        /* drives icon size via em */
 }
+.rating__marks .icon { width: 1em; height: 1em; display: block; }
+.rating__src { color: var(--text); font-weight: 600; }
+
+/* shared: filled gold symbols */
+.icon--star,
+.icon--heart { fill: currentColor; }
 
 /* ---------- 3. Video ---------- */
 .video { width: 100%; }
@@ -188,61 +201,6 @@ body {
   width: 100%;
   height: 100%;
   border: 0;
-}
-
-/* ---------- Press cards (all shown at once) ---------- */
-.press {
-  max-width: 1040px;
-  margin: 1.6rem auto 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;      /* cards in a row share height */
-  gap: 1rem;
-}
-
-.press__card {
-  flex: 0 1 300px;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.7rem;
-  text-align: center;
-  padding: 1.15rem 1rem;
-  border: 1px solid rgba(238, 236, 232, 0.08);
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.015);
-}
-
-.press__quote {
-  margin: 0;
-  font-weight: 700;
-  font-style: italic;
-  text-transform: uppercase;
-  color: var(--text);
-  font-size: 15px;
-  line-height: 1.35;
-}
-
-.press__rating {
-  display: flex;
-  gap: 4px;                /* matches the requested 4px letter-spacing */
-  color: var(--gold-cta);
-  font-size: 16px;         /* drives icon size via em */
-  margin-top: auto;        /* pin rating + source to the bottom for a tidy grid */
-}
-.press__rating .icon { width: 1em; height: 1em; display: block; }
-.icon--star,
-.icon--heart { fill: currentColor; }
-
-.press__source {
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #8A8E91;
-  font-size: 12px;
 }
 
 /* ---------- Audience quotes marquee ---------- */
@@ -481,11 +439,6 @@ body {
   /* reveal once playing; reserve space so the bar never covers the content below */
   body.is-playing .stickybar { transform: translateY(0); }
   body.is-playing { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
-
-  /* press cards: stack one per row, slightly smaller type */
-  .press__card { flex-basis: 100%; }
-  .press__quote { font-size: 14px; }
-  .press__rating { font-size: 15px; }
 }
 
 /* ---------- Motion ---------- */

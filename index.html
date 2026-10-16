@@ -45,10 +45,29 @@
     <header class="hero">
       <p class="kicker">Fuldt show · 71 minutter</p>
       <h1 class="headline">&bdquo;Perfektion, overskud&shy; og andre lorteord&rdquo;</h1>
-      <p class="hero__sub">
-        <span class="stars" aria-hidden="true">★★★★★★</span>
-        <span class="hero__source">Jyllands-Posten</span>
-      </p>
+      <div class="hero__sub">
+        <span class="rating" role="img" aria-label="Seks stjerner, Jyllands-Posten">
+          <span class="rating__marks">
+            <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.2l6.5-.9z"/></svg>
+            <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.2l6.5-.9z"/></svg>
+            <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.2l6.5-.9z"/></svg>
+            <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.2l6.5-.9z"/></svg>
+            <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.2l6.5-.9z"/></svg>
+            <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.2l6.5-.9z"/></svg>
+          </span>
+          <span class="rating__src">Jyllands-Posten</span>
+        </span>
+        <span class="rating" role="img" aria-label="Fem hjerter, Politiken">
+          <span class="rating__marks">
+            <svg class="icon icon--heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.3l-1.4-1.3C5.4 15.3 2 12.2 2 8.5 2 5.5 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.5 22 8.5c0 3.7-3.4 6.8-8.6 11.5L12 21.3z"/></svg>
+            <svg class="icon icon--heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.3l-1.4-1.3C5.4 15.3 2 12.2 2 8.5 2 5.5 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.5 22 8.5c0 3.7-3.4 6.8-8.6 11.5L12 21.3z"/></svg>
+            <svg class="icon icon--heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.3l-1.4-1.3C5.4 15.3 2 12.2 2 8.5 2 5.5 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.5 22 8.5c0 3.7-3.4 6.8-8.6 11.5L12 21.3z"/></svg>
+            <svg class="icon icon--heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.3l-1.4-1.3C5.4 15.3 2 12.2 2 8.5 2 5.5 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.5 22 8.5c0 3.7-3.4 6.8-8.6 11.5L12 21.3z"/></svg>
+            <svg class="icon icon--heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.3l-1.4-1.3C5.4 15.3 2 12.2 2 8.5 2 5.5 4.4 3 7.5 3c1.7 0 3.4.8 4.5 2.1C13.1 3.8 14.8 3 16.5 3 19.6 3 22 5.5 22 8.5c0 3.7-3.4 6.8-8.6 11.5L12 21.3z"/></svg>
+          </span>
+          <span class="rating__src">Politiken</span>
+        </span>
+      </div>
     </header>
 
     <!-- 3. VIDEO -->
@@ -63,22 +82,6 @@
             </svg>
           </span>
         </button>
-      </div>
-
-      <!-- Press cards (all shown at once; built by script.js from the REVIEWS array). -->
-      <div class="press" id="press" aria-label="Presseomtale">
-        <figure class="press__card">
-          <blockquote class="press__quote">&bdquo;Warbergs foreløbigt bedste onemanshow&rdquo;</blockquote>
-          <div class="press__rating" role="img" aria-label="Seks stjerner">
-            <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.2l6.5-.9z"/></svg>
-            <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.2l6.5-.9z"/></svg>
-            <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.2l6.5-.9z"/></svg>
-            <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.2l6.5-.9z"/></svg>
-            <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.2l6.5-.9z"/></svg>
-            <svg class="icon icon--star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.2l6.5-.9z"/></svg>
-          </div>
-          <figcaption class="press__source">Jyllands-Posten</figcaption>
-        </figure>
       </div>
     </section>
 
