@@ -39,7 +39,6 @@ const VOICES = [
   "Fantastisk 😂😂 tak for det 🙏",
   "Et fantastisk og nærværende show med sjov og eftertænksomt indhold. Det kan ikke fra bedre"
 ];
-const VOICE_SOURCE = "Seer på YouTube";
 
 (function () {
   "use strict";
@@ -126,17 +125,12 @@ const VOICE_SOURCE = "Seer på YouTube";
     q.className = "voices__q";
     q.textContent = "„" + text + "”"; // „ … "
 
-    var src = document.createElement("span");
-    src.className = "voices__src";
-    src.textContent = VOICE_SOURCE;
-
     var sep = document.createElement("span");
     sep.className = "voices__sep";
     sep.setAttribute("aria-hidden", "true");
     sep.textContent = "·";
 
     item.appendChild(q);
-    item.appendChild(src);
     item.appendChild(sep);
     return item;
   }
