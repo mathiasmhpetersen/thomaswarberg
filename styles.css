@@ -208,9 +208,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.75rem;
+  gap: 0.7rem;
   text-align: center;
-  padding: 1.35rem 1.1rem;
+  padding: 1.15rem 1rem;
   border: 1px solid rgba(238, 236, 232, 0.08);
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.015);
@@ -222,7 +222,7 @@ body {
   font-style: italic;
   text-transform: uppercase;
   color: var(--text);
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.35;
 }
 
@@ -230,7 +230,7 @@ body {
   display: flex;
   gap: 4px;                /* matches the requested 4px letter-spacing */
   color: var(--gold-cta);
-  font-size: 18px;         /* drives icon size via em */
+  font-size: 16px;         /* drives icon size via em */
   margin-top: auto;        /* pin rating + source to the bottom for a tidy grid */
 }
 .press__rating .icon { width: 1em; height: 1em; display: block; }
@@ -399,8 +399,8 @@ body {
 
   /* press cards: stack one per row, slightly smaller type */
   .press__card { flex-basis: 100%; }
-  .press__quote { font-size: 16px; }
-  .press__rating { font-size: 16px; }
+  .press__quote { font-size: 14px; }
+  .press__rating { font-size: 15px; }
 }
 
 /* ---------- Motion ---------- */
