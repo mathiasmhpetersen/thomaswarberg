@@ -29,8 +29,7 @@ const REVIEWS = [
   }
 ];
 
-/* Audience quotes for the marquee strip (verbatim — no names, handles or dates).
-   Each is shown with the source label "Seer på YouTube". */
+/* Audience quotes for the marquee strip (verbatim — no names, handles or dates). */
 const VOICES = [
   "Fuck det er fedt det her show! Man får da det BEDSTE grin",
   "Græder stadig af grin en uge efter",
