@@ -34,6 +34,13 @@ const VOICES = [
     el.textContent = NEW_SHOW;
   });
 
+  // --- Meta Pixel: "Se byer og køb billet" fires AddToWishlist ---
+  document.querySelectorAll(".js-track-wishlist").forEach(function (el) {
+    el.addEventListener("click", function () {
+      if (typeof window.fbq === "function") window.fbq("track", "AddToWishlist");
+    });
+  });
+
   // --- Video poster image (from YOUTUBE_ID) ---
   if (poster) {
     const posterUrl = "https://i.ytimg.com/vi/" + YOUTUBE_ID + "/maxresdefault.jpg";
